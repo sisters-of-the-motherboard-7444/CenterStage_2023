@@ -1,7 +1,6 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 //REMINDER -- Battery Level effects Motor Power which effects timing
@@ -13,7 +12,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 public class R2Ballister extends LinearOpMode {
 
-    HardwareClassCenterStage Bass_Pro_Shop = new HardwareClassCenterStage();
+    HardwareClassCenterStage Microwave = new HardwareClassCenterStage();
 
     @Override
 
@@ -24,7 +23,7 @@ public class R2Ballister extends LinearOpMode {
         telemetry.update();
 
         System.out.println("Initialize Robot");
-        Bass_Pro_Shop.InitializeRobot(hardwareMap);
+        Microwave.InitializeRobot(hardwareMap);
         System.out.println("Robot Initialized");
 
         telemetry.addData("Status", "Ready!");
@@ -33,6 +32,6 @@ public class R2Ballister extends LinearOpMode {
 
         waitForStart();
 
-        Bass_Pro_Shop.DriveStraight(.6, 1250, 1); //drive forward to read signal sheet things
+        Microwave.DriveStraight(.6, 1250, 1); //drive forward to read signal sheet things
     }
 }

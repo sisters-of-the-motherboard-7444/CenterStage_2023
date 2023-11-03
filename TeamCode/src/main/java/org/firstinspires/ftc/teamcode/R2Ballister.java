@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 //REMINDER -- Battery Level effects Motor Power which effects timing
@@ -12,7 +13,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 public class R2Ballister extends LinearOpMode {
 
-    HardwareClassCenterStage Microwave = new HardwareClassCenterStage();
+    HardwareClassCenterStage Bass_Pro_Shop = new HardwareClassCenterStage();
 
     @Override
 
@@ -23,7 +24,7 @@ public class R2Ballister extends LinearOpMode {
         telemetry.update();
 
         System.out.println("Initialize Robot");
-        Microwave.InitializeRobot(hardwareMap);
+        Bass_Pro_Shop.InitializeRobot(hardwareMap);
         System.out.println("Robot Initialized");
 
         telemetry.addData("Status", "Ready!");
@@ -32,6 +33,36 @@ public class R2Ballister extends LinearOpMode {
 
         waitForStart();
 
-        Microwave.DriveStraight(.6, 1250, 1); //drive forward to read signal sheet things
+        Bass_Pro_Shop.DriveStraight(.6, 1250, 1); //drive forward to read signal sheet things
+
+        Thread.sleep(250);
+
+        //Insert reading of the apriltag
+
+        Bass_Pro_Shop.CenterSpin(.6,1000,1);
+
+        Thread.sleep(250);
+
+        Bass_Pro_Shop.DriveStraight(.6,1250,1); //drive to balck board
+
+        Thread.sleep(250);
+
+        //Insert April Tag Code to place hexagon
+
+        Bass_Pro_Shop.CenterSpin(.6,1000,-1); //spin to the left
+
+        Thread.sleep(250);
+
+        Bass_Pro_Shop.DriveStraight(.6,750,1);//wee bit forward
+
+        Thread.sleep(250);
+
+        Bass_Pro_Shop.CenterSpin(.6,1000,-1);
+
+        Thread.sleep(250);
+
+        Bass_Pro_Shop.DriveStraight(.6,3150,1);//drive to other side of field
+
+        Thread.sleep(250);
     }
 }

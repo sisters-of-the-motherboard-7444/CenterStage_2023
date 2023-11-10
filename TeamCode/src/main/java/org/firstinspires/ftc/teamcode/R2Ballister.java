@@ -64,5 +64,15 @@ public class R2Ballister extends LinearOpMode {
         Bass_Pro_Shop.DriveStraight(.6,3150,1);//drive to other side of field
 
         Thread.sleep(250);
+
+        /* wiggle wiggle
+        Bass_Pro_Shop.CenterSpin(.6,100,1);
+        Bass_Pro.Shop.CenterSpin(.6,100,-1);
+        Bass_Pro_Shop.CenterSpin(.6,100,1);
+        Bass_Pro.Shop.CenterSpin(.6,100,-1);
+        Bass_Pro_Shop.CenterSpin(.6,100,1);
+        Bass_Pro.Shop.CenterSpin(.6,100,-1);
+
+         */
     }
 }

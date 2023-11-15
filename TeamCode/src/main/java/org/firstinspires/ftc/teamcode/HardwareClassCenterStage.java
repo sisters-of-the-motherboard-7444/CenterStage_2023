@@ -7,6 +7,7 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 
+
 /**
  * Original created by ashley.peake on 8/30/2018.
  * modified by KPSorrells (for teaching RoboLearners) 11/26/2022
@@ -237,8 +238,5 @@ public class HardwareClassCenterStage {
         motorFrontRight.setPower(0.0);
         motorBackRight.setPower(0.0);
     }
-
-
-
 
 }

@@ -92,7 +92,7 @@ public class HardwareClassCenterStage {
 
     } //End DriveStraight Method
 
-    public void DriveSideways(double power, long inches, int Direction) throws InterruptedException {
+    public void DriveSideways(double power, double inches, int Direction) throws InterruptedException {
 
         //For strafing to the left or the right
         // declare variables for this method (power, totalSeconds (milliseconds) & Direction)
@@ -254,7 +254,7 @@ public class HardwareClassCenterStage {
         double rpm = 327;
         double minToSec = 60;
         double secToMs = 1000;
-        miliseconds = revs * (power * rpm * minToSec * secToMs);
+        miliseconds = revs / (power * (rpm / minToSec) / secToMs);
         return miliseconds;
     }
 

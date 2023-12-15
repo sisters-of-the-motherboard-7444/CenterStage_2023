@@ -34,7 +34,7 @@ public class BasicParkRed extends LinearOpMode {
         waitForStart();
         //start in same location as R2Ballister, but on the blue side
 
-        Bass_Pro_Shop.DriveSideways(.5,48,1);//sideways to the right
+        Bass_Pro_Shop.DriveSideways(.5,96,1);//sideways to the right
 
         Thread.sleep(250);
 

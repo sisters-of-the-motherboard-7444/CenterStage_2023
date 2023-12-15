@@ -1,6 +1,6 @@
 package org.firstinspires.ftc.teamcode;
 
-
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
@@ -236,7 +236,7 @@ public class HardwareClassCenterStage {
 
     } //End CenterSpin Method
 
-    public void StopMotion(double seconds) throws InterruptedException {
+    public void StopMotion()  {
         // stops all motion
 
         motorFrontLeft.setPower(0.0);
@@ -246,12 +246,12 @@ public class HardwareClassCenterStage {
     }
 
     public double distanceToSec(double inches, double power){
-        double miliseconds = 0;
+        double miliseconds;
         double diameter = 3.7795;
         double circumfrence = 3.14 * diameter;
         double revs = inches / circumfrence;
         double rpm = 327;
-        double minToSec = 1/60;
+        double minToSec = 60;
         double secToMs = 1000;
         miliseconds = revs * (power * rpm * minToSec * secToMs);
         return miliseconds;

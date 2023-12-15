@@ -7,7 +7,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 //REMINDER -- Battery Level effects Motor Power which effects timing
 //this auto program will move a preloaded cone to the substation
 
-@Autonomous (name = "Ballister")
+@Autonomous (name = "R2Ballister")
 
 //@Disabled
 

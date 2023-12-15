@@ -11,7 +11,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 //@Disabled
 
-public class BasicParkRed extends LinearOpMode {
+public class BasicParkBlue extends LinearOpMode {
 
     HardwareClassCenterStage Bass_Pro_Shop = new HardwareClassCenterStage();
 
@@ -32,9 +32,9 @@ public class BasicParkRed extends LinearOpMode {
         telemetry.update();
 
         waitForStart();
-        //start in same location as R2Ballister, but on the blue side
+        //start in same location as R2Ballister
 
-        Bass_Pro_Shop.DriveSideways(.5,48,1);//sideways to the right
+        Bass_Pro_Shop.DriveSideways(.5,48,-1);//sideways to the right
 
         Thread.sleep(250);
 

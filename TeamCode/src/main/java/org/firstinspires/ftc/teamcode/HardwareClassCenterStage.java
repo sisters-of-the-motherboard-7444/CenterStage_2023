@@ -1,7 +1,6 @@
 package org.firstinspires.ftc.teamcode;
 
 
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
@@ -21,6 +20,11 @@ public class HardwareClassCenterStage {
     public DcMotor motorBackLeft;
     public DcMotor motorFrontRight;
     public DcMotor motorBackRight;
+    public DcMotor slidesRight;
+    public DcMotor slidesLeft;
+    public DcMotor armMotor;
+    public Servo clawWrist;
+    public Servo clawGripper;
 
     int driveTime;
 
@@ -187,6 +191,14 @@ public class HardwareClassCenterStage {
         motorBackRight.setPower(0.0);
 
     } //End Diagonal Backward Method
+
+    public double inToSec(int inches, int power){
+        double finalSec = 0;
+        int motorRpm = 50;
+        int finalRpm = motorRpm * power;
+        //add code
+        return finalSec;
+    }
 
 
     public void CenterSpin(double power, long totalSeconds, int Direction) throws InterruptedException {

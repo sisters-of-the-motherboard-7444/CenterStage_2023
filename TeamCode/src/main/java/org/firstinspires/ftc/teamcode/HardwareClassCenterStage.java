@@ -1,3 +1,4 @@
+
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
@@ -5,7 +6,6 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
-
 
 /**
  * Original created by ashley.peake on 8/30/2018.
@@ -26,8 +26,17 @@ public class HardwareClassCenterStage {
     public Servo clawWrist;
     public Servo clawGripper;
 
-    int driveTime;
+    // lift motors
+    public DcMotor slidesLeft;
+    public DcMotor slidesRight;
 
+    // servos or claw - CR = continuous Servo
+    // public CRServo claw;
+    public Servo claw = null;
+
+    //Sets variable driveTime as an integer
+
+    int driveTime;
 
 //----------------------------Initialize Robot ---------------------------------
   /*  This method allows us to initialize the motors and sensors only once.
@@ -55,6 +64,13 @@ public class HardwareClassCenterStage {
         motorFrontLeft.setDirection(DcMotorSimple.Direction.REVERSE); //Competition Bot & PracticeBot PowerPlay
         motorBackLeft.setDirection(DcMotorSimple.Direction.REVERSE); //Competition Bot & PracticeBot PowerPlay
 
+        //Initialize Lift
+        slidesLeft = HWMap.dcMotor.get("slidesLeft");
+        slidesRight = HWMap.dcMotor.get("slidesRight");
+
+        //Initialize Servos
+        //claw = HWMap.crservo.get("claw");
+        claw = HWMap.servo.get("claw");
 
     }  //end of method InitializeRobot
 
@@ -91,7 +107,7 @@ public class HardwareClassCenterStage {
 
     } //End DriveStraight Method
 
-    public void DriveSideways(double power, long inches, int Direction) throws InterruptedException {
+    public void DriveSideways(double power, double inches, int Direction) throws InterruptedException {
 
         //For strafing to the left or the right
         // declare variables for this method (power, totalSeconds (milliseconds) & Direction)
@@ -244,6 +260,22 @@ public class HardwareClassCenterStage {
         motorFrontRight.setPower(0.0);
         motorBackRight.setPower(0.0);
     }
+    public void moveLift(double power, long totalSeconds, int Direction) throws InterruptedException{
+        slidesLeft.setPower(power * Direction);
+        slidesRight.setPower(power * Direction);
+        Thread.sleep(totalSeconds);
+
+        //lift.setPower(0);
+    }
+
+    public void moveClaw(double power) throws InterruptedException{
+        claw.setPosition(power);
+        //Thread.sleep(totalSeconds);
+
+        //slidesLeft.setPower(0);
+        //slidesRight.setPower(0);
+
+    }
 
     public double distanceToSec(double inches, double power){
         double miliseconds;
@@ -253,7 +285,7 @@ public class HardwareClassCenterStage {
         double rpm = 327;
         double minToSec = 60;
         double secToMs = 1000;
-        miliseconds = revs * (power * rpm * minToSec * secToMs);
+        miliseconds = revs / (power * (rpm / minToSec) / secToMs);
         return miliseconds;
     }
 

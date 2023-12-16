@@ -7,7 +7,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 //REMINDER -- Battery Level effects Motor Power which effects timing
 //this auto program will move a preloaded cone to the substation
 
-@Autonomous (name = "BasicParkRed")
+@Autonomous (name = "BasicParkBlue")
 
 //@Disabled
 
@@ -34,7 +34,7 @@ public class BasicParkBlue extends LinearOpMode {
         waitForStart();
         //start in same location as R2Ballister
 
-        Bass_Pro_Shop.DriveSideways(.5,48,-1);//sideways to the right
+        Bass_Pro_Shop.DriveSideways(.5,96,-1);//sideways to the left
 
         Thread.sleep(250);
 

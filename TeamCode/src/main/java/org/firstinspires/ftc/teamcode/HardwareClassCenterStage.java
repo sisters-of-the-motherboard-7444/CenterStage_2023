@@ -1,5 +1,5 @@
-package org.firstinspires.ftc.teamcode;
 
+package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -20,6 +20,11 @@ public class HardwareClassCenterStage {
     public DcMotor motorBackLeft;
     public DcMotor motorFrontRight;
     public DcMotor motorBackRight;
+    //public DcMotor slidesRight;
+    //public DcMotor slidesLeft;
+    public DcMotor armMotor;
+    public Servo clawWrist;
+    public Servo clawGripper;
 
     // lift motors
     public DcMotor slidesLeft;
@@ -78,7 +83,7 @@ public class HardwareClassCenterStage {
       the robot to either move straight ot turn.
    */
 
-    public void DriveStraight(double power, double totalSeconds, int Direction) throws InterruptedException {
+    public void DriveStraight(double power, double inches, int Direction) throws InterruptedException {
 
         //For driving forward or backward
         // declare variables for this method (power, totalSeconds (milliseconds) & Direction)
@@ -91,8 +96,8 @@ public class HardwareClassCenterStage {
         motorBackLeft.setPower(power * Direction);
         motorFrontRight.setPower(power * Direction);
         motorBackRight.setPower(power * Direction);
-
-        Thread.sleep((long) totalSeconds);
+        double miliseconds = distanceToSec(inches, power);
+        Thread.sleep((long) miliseconds);
 
         //Stop Robot
         motorFrontLeft.setPower(0.0);
@@ -102,7 +107,7 @@ public class HardwareClassCenterStage {
 
     } //End DriveStraight Method
 
-    public void DriveSideways(double power, long totalSeconds, int Direction) throws InterruptedException {
+    public void DriveSideways(double power, double inches, int Direction) throws InterruptedException {
 
         //For strafing to the left or the right
         // declare variables for this method (power, totalSeconds (milliseconds) & Direction)
@@ -115,8 +120,8 @@ public class HardwareClassCenterStage {
         motorBackLeft.setPower(power * -Direction);
         motorFrontRight.setPower(power * -Direction);
         motorBackRight.setPower(power * Direction);
-
-        Thread.sleep(totalSeconds);
+        double miliseconds = distanceToSec(inches, power);
+        Thread.sleep((long) miliseconds);
 
         // stops all motion
         motorFrontLeft.setPower(0.0);
@@ -126,7 +131,7 @@ public class HardwareClassCenterStage {
 
     } //Ends DriveSideways Method
 
-    public void DiagonalForward(double power, long totalSeconds, int Direction) throws InterruptedException {
+    public void DiagonalForward(double power, long inches, int Direction) throws InterruptedException {
 
         //For driving forward in a diagonal direction
         // declare variables for this method (power, totalSeconds (milliseconds) & Direction)
@@ -141,8 +146,8 @@ public class HardwareClassCenterStage {
             motorBackLeft.setPower(0);
             motorFrontRight.setPower(0);
             motorBackRight.setPower(power * Direction);
-
-            Thread.sleep(totalSeconds);
+            double miliseconds = distanceToSec(inches, power);
+            Thread.sleep((long) miliseconds);
         }
 
         if (Direction == -1) {
@@ -151,8 +156,8 @@ public class HardwareClassCenterStage {
             motorBackLeft.setPower(power * -Direction);
             motorFrontRight.setPower(power * -Direction);
             motorBackRight.setPower(0);
-
-            Thread.sleep(totalSeconds);
+            double miliseconds = distanceToSec(inches, power);
+            Thread.sleep((long) miliseconds);
         }
 
         // stops all motion
@@ -165,7 +170,7 @@ public class HardwareClassCenterStage {
     } //End Diagonal Forward Method
 
 
-    public void DiagonalBackward(double power, long totalSeconds, int Direction) throws InterruptedException {
+    public void DiagonalBackward(double power, long inches, int Direction) throws InterruptedException {
 
         //For driving forward in a diagonal direction
         // declare variables for this method (power, totalSeconds (milliseconds) & Direction)
@@ -173,7 +178,7 @@ public class HardwareClassCenterStage {
         //For left motion set direction = -1 (In method call)
         //example: DiagonalBackward(.8, 3, 1) means drive straight at 80% power, for 3 seconds, in back Right direction
         //example: DiagonalForward(.75, 5, -1) means drive straight at 75% power, for 5 seconds, in left direction
-
+        double miliseconds = distanceToSec(inches, power);
         if (Direction == 1) {
 
             motorFrontLeft.setPower(0);
@@ -181,7 +186,7 @@ public class HardwareClassCenterStage {
             motorFrontRight.setPower(power * -Direction);
             motorBackRight.setPower(0);
 
-            Thread.sleep(totalSeconds);
+            Thread.sleep((long) miliseconds);
         }
 
         if (Direction == -1) {
@@ -191,7 +196,7 @@ public class HardwareClassCenterStage {
             motorFrontRight.setPower(0);
             motorBackRight.setPower(power * Direction);
 
-            Thread.sleep(totalSeconds);
+            Thread.sleep((long) miliseconds);
         }
 
         // stops all motion
@@ -204,7 +209,9 @@ public class HardwareClassCenterStage {
     } //End Diagonal Backward Method
 
 
-    public void CenterSpin(double power, long totalSeconds, int Direction) throws InterruptedException {
+
+
+    public void CenterSpin(double power, long miliseconds, int Direction) throws InterruptedException {
 
         //For turning robot on center
         // declare variables for this method (power, totalSeconds (milliseconds) & Direction)
@@ -223,7 +230,7 @@ public class HardwareClassCenterStage {
             motorFrontRight.setPower(power * -Direction);
             motorBackRight.setPower(power * -Direction);
 
-            Thread.sleep(totalSeconds);
+            Thread.sleep(miliseconds);
         }
 
         if (Direction == -1) {
@@ -233,7 +240,7 @@ public class HardwareClassCenterStage {
             motorFrontRight.setPower(power * -Direction);
             motorBackRight.setPower(power * -Direction);
 
-            Thread.sleep(totalSeconds);
+            Thread.sleep(miliseconds);
         }
 
         // stops all motion
@@ -245,7 +252,7 @@ public class HardwareClassCenterStage {
 
     } //End CenterSpin Method
 
-    public void StopMotion(double seconds) throws InterruptedException {
+    public void StopMotion()  {
         // stops all motion
 
         motorFrontLeft.setPower(0.0);
@@ -268,6 +275,18 @@ public class HardwareClassCenterStage {
         //slidesLeft.setPower(0);
         //slidesRight.setPower(0);
 
+    }
+
+    public double distanceToSec(double inches, double power){
+        double miliseconds;
+        double diameter = 3.7795;
+        double circumfrence = 3.14 * diameter;
+        double revs = inches / circumfrence;
+        double rpm = 327;
+        double minToSec = 60;
+        double secToMs = 1000;
+        miliseconds = revs / (power * (rpm / minToSec) / secToMs);
+        return miliseconds;
     }
 
 }

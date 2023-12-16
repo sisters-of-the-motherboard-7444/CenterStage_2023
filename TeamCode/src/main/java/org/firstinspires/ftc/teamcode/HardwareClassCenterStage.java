@@ -7,7 +7,6 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 
-
 /**
  * Original created by ashley.peake on 8/30/2018.
  * modified by KPSorrells (for teaching RoboLearners) 11/26/2022
@@ -22,8 +21,17 @@ public class HardwareClassCenterStage {
     public DcMotor motorFrontRight;
     public DcMotor motorBackRight;
 
-    int driveTime;
+    // lift motors
+    public DcMotor slidesLeft;
+    public DcMotor slidesRight;
 
+    // servos or claw - CR = continuous Servo
+    // public CRServo claw;
+    public Servo claw = null;
+
+    //Sets variable driveTime as an integer
+
+    int driveTime;
 
 //----------------------------Initialize Robot ---------------------------------
   /*  This method allows us to initialize the motors and sensors only once.
@@ -51,6 +59,13 @@ public class HardwareClassCenterStage {
         motorFrontLeft.setDirection(DcMotorSimple.Direction.REVERSE); //Competition Bot & PracticeBot PowerPlay
         motorBackLeft.setDirection(DcMotorSimple.Direction.REVERSE); //Competition Bot & PracticeBot PowerPlay
 
+        //Initialize Lift
+        slidesLeft = HWMap.dcMotor.get("slidesLeft");
+        slidesRight = HWMap.dcMotor.get("slidesRight");
+
+        //Initialize Servos
+        //claw = HWMap.crservo.get("claw");
+        claw = HWMap.servo.get("claw");
 
     }  //end of method InitializeRobot
 
@@ -237,6 +252,22 @@ public class HardwareClassCenterStage {
         motorBackLeft.setPower(0.0);
         motorFrontRight.setPower(0.0);
         motorBackRight.setPower(0.0);
+    }
+    public void moveLift(double power, long totalSeconds, int Direction) throws InterruptedException{
+        slidesLeft.setPower(power * Direction);
+        slidesRight.setPower(power * Direction);
+        Thread.sleep(totalSeconds);
+
+        //lift.setPower(0);
+    }
+
+    public void moveClaw(double power) throws InterruptedException{
+        claw.setPosition(power);
+        //Thread.sleep(totalSeconds);
+
+        //slidesLeft.setPower(0);
+        //slidesRight.setPower(0);
+
     }
 
 }

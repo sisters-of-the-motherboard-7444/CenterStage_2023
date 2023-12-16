@@ -33,7 +33,7 @@ public class R2Ballister extends LinearOpMode {
 
         waitForStart();
 
-        Bass_Pro_Shop.DriveStraight(.6, 1250, 1); //drive forward to read signal sheet things
+        Bass_Pro_Shop.DriveStraight(.6, 30, 1); //drive forward to read signal sheet things
 
         Thread.sleep(250);
 
@@ -43,7 +43,7 @@ public class R2Ballister extends LinearOpMode {
 
         Thread.sleep(250);
 
-        Bass_Pro_Shop.DriveStraight(.6,1250,1); //drive to balck board
+        Bass_Pro_Shop.DriveStraight(.6,30,1); //drive to balck board
 
         Thread.sleep(250);
 
@@ -53,7 +53,7 @@ public class R2Ballister extends LinearOpMode {
 
         Thread.sleep(250);
 
-        Bass_Pro_Shop.DriveStraight(.6,750,1);//wee bit forward
+        Bass_Pro_Shop.DriveStraight(.6,20,1);//wee bit forward
 
         Thread.sleep(250);
 
@@ -61,18 +61,17 @@ public class R2Ballister extends LinearOpMode {
 
         Thread.sleep(250);
 
-        Bass_Pro_Shop.DriveStraight(.6,3150,1);//drive to other side of field
+        Bass_Pro_Shop.DriveStraight(.6,100,1);//drive to other side of field, assuming can fit under the railing
 
         Thread.sleep(250);
 
-        /* wiggle wiggle
+        // wiggle wiggle
         Bass_Pro_Shop.CenterSpin(.6,100,1);
-        Bass_Pro.Shop.CenterSpin(.6,100,-1);
+        Bass_Pro_Shop.CenterSpin(.6,100,-1);
         Bass_Pro_Shop.CenterSpin(.6,100,1);
-        Bass_Pro.Shop.CenterSpin(.6,100,-1);
+        Bass_Pro_Shop.CenterSpin(.6,100,-1);
         Bass_Pro_Shop.CenterSpin(.6,100,1);
-        Bass_Pro.Shop.CenterSpin(.6,100,-1);
+        Bass_Pro_Shop.CenterSpin(.6,100,-1);
 
-         */
     }
 }

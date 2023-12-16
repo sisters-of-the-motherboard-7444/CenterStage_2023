@@ -32,7 +32,6 @@ public class TeleOpCenterStage extends LinearOpMode {
         motorFrontLeft = hardwareMap.get(DcMotor.class, "motorFrontLeft");
         motorBackRight = hardwareMap.get(DcMotor.class, "motorBackRight");
         motorBackLeft = hardwareMap.get(DcMotor.class, "motorBackLeft");
-
         slidesLeft = hardwareMap.get(DcMotorEx.class, "slidesLeft");
         slidesRight = hardwareMap.get(DcMotorEx.class, "slidesRight");
         claw = hardwareMap.servo.get("claw");

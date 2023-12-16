@@ -30,8 +30,8 @@ public class HardwareClassCenterStage {
     public Servo claw = null;
 
     //Sets variable driveTime as an integer
-    int driveTime;
 
+    int driveTime;
 
 //----------------------------Initialize Robot ---------------------------------
   /*  This method allows us to initialize the motors and sensors only once.
@@ -58,7 +58,6 @@ public class HardwareClassCenterStage {
         motorBackRight.setDirection(DcMotorSimple.Direction.FORWARD); //Competition Bot PowerPlay
         motorFrontLeft.setDirection(DcMotorSimple.Direction.REVERSE); //Competition Bot & PracticeBot PowerPlay
         motorBackLeft.setDirection(DcMotorSimple.Direction.REVERSE); //Competition Bot & PracticeBot PowerPlay
-
 
         //Initialize Lift
         slidesLeft = HWMap.dcMotor.get("slidesLeft");

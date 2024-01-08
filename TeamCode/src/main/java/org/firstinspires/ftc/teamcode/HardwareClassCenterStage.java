@@ -279,9 +279,9 @@ public class HardwareClassCenterStage {
 
     public double distanceToSec(double inches, double power){
         double miliseconds;
-        double diameter = 3.7795;
-        double circumfrence = 3.14 * diameter;
-        double revs = inches / circumfrence;
+        double diameter = 3.7795; //
+        double circumference = 3.14 * diameter;
+        double revs = inches / circumference;
         double rpm = 327;
         double minToSec = 60;
         double secToMs = 1000;

@@ -2,10 +2,22 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
-import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorEx;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.hardware.CRServo;
+import java.lang.Object;
+import com.qualcomm.robotcore.hardware.Blinker;
+import com.qualcomm.robotcore.hardware.DcMotorEx;
+import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.CRServo;
+import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.hardware.Gyroscope;
+
 
 /**
  * Original created by ashley.peake on 8/30/2018.
@@ -52,7 +64,9 @@ public class HardwareClassCenterStage {
         motorBackLeft = HWMap.dcMotor.get("motorBackLeft");
         motorFrontRight = HWMap.dcMotor.get("motorFrontRight");
         motorBackRight = HWMap.dcMotor.get("motorBackRight");
-
+        PIDslides leftController = new PIDslides(0.007, 0, 0.00);
+        PIDslides rightController = new PIDslides(0.007, 0, 0.00);
+        PIDArm armController = new PIDArm(0.007, 0, 0.00045);
 
         // Reverse the right side motors
         // Reverse left motors if you are using NeveRests
@@ -71,6 +85,28 @@ public class HardwareClassCenterStage {
         //Initialize Servos
         //claw = HWMap.crservo.get("claw");
         claw = HWMap.servo.get("claw");
+        slidesLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        slidesRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        armMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+
+        slidesLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        slidesLeft.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        slidesRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        slidesRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        armMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        armMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        int slidesTargetPosition = 0;
+        int sGROUND_POSITION = 0;
+        int sMID_POSITION = 1075;
+        int sHIGH_POSITION = 2150;
+
+        int armTargetPosition = 0;
+        int aGROUND_POSITION = -30;
+        int aLOW_POSITION = -1200;
+        int aMID_POSITION = -1100;
+        int aHIGH_POSITION = -90;
+        int aHANG_POSITION = -800;
+        int aPULL_POSITION = -200;
 
     }  //end of method InitializeRobot
 

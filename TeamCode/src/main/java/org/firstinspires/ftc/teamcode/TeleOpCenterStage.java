@@ -20,11 +20,11 @@ public class TeleOpCenterStage extends LinearOpMode {
     public DcMotor motorFrontLeft = null;
     public DcMotor motorBackRight = null;
     public DcMotor motorBackLeft = null;
-    public Servo claw;
+    //public Servo claw;
 
     //the reason we use DcMotor Ex instead of DcMotor is for extra speed
-    public DcMotorEx slidesLeft;
-    public DcMotorEx slidesRight;
+    //public DcMotorEx slidesLeft;
+    //public DcMotorEx slidesRight;
 
     @Override
     public void runOpMode() throws InterruptedException {
@@ -32,16 +32,16 @@ public class TeleOpCenterStage extends LinearOpMode {
         motorFrontLeft = hardwareMap.get(DcMotor.class, "motorFrontLeft");
         motorBackRight = hardwareMap.get(DcMotor.class, "motorBackRight");
         motorBackLeft = hardwareMap.get(DcMotor.class, "motorBackLeft");
-        slidesLeft = hardwareMap.get(DcMotorEx.class, "slidesLeft");
+        /*slidesLeft = hardwareMap.get(DcMotorEx.class, "slidesLeft");
         slidesRight = hardwareMap.get(DcMotorEx.class, "slidesRight");
-        claw = hardwareMap.servo.get("claw");
+        claw = hardwareMap.servo.get("claw"); */
 
         motorBackRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         motorBackLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         motorFrontLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         motorFrontRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
-        motorFrontRight.setDirection(DcMotorSimple.Direction.REVERSE);
+        motorFrontRight.setDirection(DcMotorSimple.Direction.FORWARD);
         motorBackRight.setDirection(DcMotorSimple.Direction.FORWARD);
         motorBackLeft.setDirection(DcMotorSimple.Direction.REVERSE);
         motorFrontLeft.setDirection(DcMotorSimple.Direction.REVERSE);
@@ -95,7 +95,7 @@ public class TeleOpCenterStage extends LinearOpMode {
             motorBackRight.setPower(backRightPower);
 
             // opening the claw!
-            if (gamepad1.right_bumper) {
+            /*if (gamepad1.right_bumper) {
                 claw.setPosition(0.2); }
 
             // closing the claw!
@@ -104,7 +104,7 @@ public class TeleOpCenterStage extends LinearOpMode {
 
             // silly claw telemetry!
             telemetry.addData("Servo Position", claw.getPosition());
-            telemetry.update();
+            telemetry.update();*/
         }
     }
 }

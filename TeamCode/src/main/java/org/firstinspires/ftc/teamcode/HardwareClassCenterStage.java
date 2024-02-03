@@ -31,7 +31,7 @@ public class HardwareClassCenterStage {
     public DcMotor slidesRight;
 
     // servos or claw - CR = continuous Servo
-    // public CRServo claw;
+    //public CRServo claw;
     public Servo claw = null;
 
     //Sets variable driveTime as an integer
@@ -260,20 +260,19 @@ public class HardwareClassCenterStage {
         motorFrontRight.setPower(0.0);
         motorBackRight.setPower(0.0);
     }
-    public void moveLift(double power, long totalSeconds, int Direction) throws InterruptedException{
-        slidesLeft.setPower(power * Direction);
-        slidesRight.setPower(power * Direction);
-        Thread.sleep(totalSeconds);
+    //public void moveLift(double power, long totalSeconds, int Direction) throws InterruptedException{
+        //slidesLeft.setPower(power * Direction);
+        //slidesRight.setPower(power * Direction);
+        //Thread.sleep(totalSeconds);
 
         //lift.setPower(0);
-    }
+  //  }
 
     public void moveClaw(double power) throws InterruptedException{
         claw.setPosition(power);
-        //Thread.sleep(totalSeconds);
-
-        //slidesLeft.setPower(0);
-        //slidesRight.setPower(0);
+        //Thread.sleep();
+        slidesLeft.setPower(0);
+        slidesRight.setPower(0);
 
     }
 

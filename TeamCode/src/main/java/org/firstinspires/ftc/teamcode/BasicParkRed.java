@@ -13,7 +13,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 public class BasicParkRed extends LinearOpMode {
 
-    HardwareClassCenterStage Bass_Pro_Shop = new HardwareClassCenterStage();
+    HardwareMapTime Bass_Pro_Shop = new HardwareMapTime();
 
     @Override
 
@@ -33,9 +33,10 @@ public class BasicParkRed extends LinearOpMode {
 
         waitForStart();
         //start in same location as R2Ballister, but on the blue side
-
-        Bass_Pro_Shop.DriveSideways(.5,96,1);//sideways to the right
-
+        Bass_Pro_Shop.clawClose();
+        Bass_Pro_Shop.DriveSideways(.5,2350,1);//sideways to the right
+        Thread.sleep(200);
+        Bass_Pro_Shop.clawOpen();
         Thread.sleep(250);
 
 //park in backstage area

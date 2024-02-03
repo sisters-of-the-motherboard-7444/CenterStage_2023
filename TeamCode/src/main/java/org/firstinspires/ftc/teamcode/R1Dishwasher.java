@@ -1,17 +1,15 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 //REMINDER -- Battery Level effects Motor Power which effects timing
-//this auto program will move a preloaded cone to the substation
 
-@Autonomous (name = "BasicParkRed")
+@Autonomous
 
 //@Disabled
 
-public class BasicParkRed extends LinearOpMode {
+public class R1Dishwasher extends LinearOpMode {
 
     HardwareMapTime Bass_Pro_Shop = new HardwareMapTime();
 
@@ -32,12 +30,24 @@ public class BasicParkRed extends LinearOpMode {
         telemetry.update();
 
         waitForStart();
-        //start in same location as R2Ballister, but on the blue side
-        Bass_Pro_Shop.clawClose();
-        Bass_Pro_Shop.DriveSideways(.5,2350,1);//sideways to the right
+
+
+        //R1Dishwasher
+        Bass_Pro_Shop.DriveSideways(0.5, 1600, 1);
+        Thread.sleep(200);
+        Bass_Pro_Shop.DriveStraight(0.5,1010,-1);
+
+        //add thing to lift claw here
         Thread.sleep(200);
         Bass_Pro_Shop.clawOpen();
-        Thread.sleep(250);
+        Thread.sleep(200);
+        Bass_Pro_Shop.clawClose();
+        Thread.sleep(200);
+        //lower claw
 
-//park in backstage area
-    }}
+        Bass_Pro_Shop.clawOpen();
+        Bass_Pro_Shop.StopMotion(1000);
+
+
+    }
+}

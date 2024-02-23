@@ -47,8 +47,6 @@ public class B2Kanan extends LinearOpMode {
 
         Bass_Pro_Shop.DriveSideways(.5,1500,1); //drive to align with board
 
-        Bass_Pro_Shop.updatePID();
-
         Thread.sleep(1000);
 
         Bass_Pro_Shop.outputLow();

@@ -8,7 +8,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 //this auto program will move a preloaded cone to the substation
 
 @Autonomous (name = "CrazyPlay")
-//TEST
+
 //@Disabled
 
 public class CrazyPlay extends LinearOpMode {
